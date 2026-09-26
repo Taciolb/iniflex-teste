@@ -2,6 +2,7 @@ package iniflex;
 
 import iniflex.model.Funcionario;
 import iniflex.service.FuncionarioService;
+import iniflex.util.FormatUtils;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -27,5 +28,21 @@ public class Principal {
 
         service.removerPorNome(funcionarios, "João");
 
+        titulo("Funcionários");
+        imprimirLista(funcionarios);
+    }
+    private static void titulo(String texto) {
+        System.out.println("\n========== " + texto + " ==========");
+    }
+
+    private static void imprimirLista(List<Funcionario> lista) {
+        System.out.printf("%-10s %-12s %12s %-15s%n", "Nome", "Nascimento", "Salário", "Função");
+        for (Funcionario f : lista) {
+            System.out.printf("%-10s %-12s %12s %-15s%n",
+                    f.getNome(),
+                    FormatUtils.data(f.getDataNascimento()),
+                    FormatUtils.valor(f.getSalario()),
+                    f.getFuncao());
+        }
     }
 }
