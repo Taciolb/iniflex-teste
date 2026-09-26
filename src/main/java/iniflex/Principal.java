@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Principal {
 
@@ -31,10 +32,16 @@ public class Principal {
         titulo("Funcionários");
         imprimirLista(funcionarios);
 
-
         service.aplicarAumento(funcionarios, new BigDecimal("10"));
         titulo("Funcionários após aumento de 10%");
         imprimirLista(funcionarios);
+
+        Map<String,List<Funcionario>> porFuncao = service.agruparPorFuncao(funcionarios);
+        titulo("Funcionários agrupados por função");
+        porFuncao.forEach((funcao, lista) -> {
+            System.out.println("\n>> " + funcao);
+            imprimirLista(lista);
+        });
     }
 
     private static void titulo(String texto) {
