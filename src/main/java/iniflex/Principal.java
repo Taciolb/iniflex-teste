@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Principal {
 
@@ -41,6 +42,9 @@ public class Principal {
         porFuncao.forEach((funcao, lista) -> {
             System.out.println("\n>> " + funcao);
             imprimirLista(lista);
+
+        titulo("Aniversariantes dos meses 10 e 12");
+        imprimirLista(service.aniversariantesNosMeses(funcionarios, Set.of(10, 12)));
         });
     }
 
