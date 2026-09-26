@@ -30,7 +30,13 @@ public class Principal {
 
         titulo("Funcionários");
         imprimirLista(funcionarios);
+
+
+        service.aplicarAumento(funcionarios, new BigDecimal("10"));
+        titulo("Funcionários após aumento de 10%");
+        imprimirLista(funcionarios);
     }
+
     private static void titulo(String texto) {
         System.out.println("\n========== " + texto + " ==========");
     }
@@ -43,6 +49,8 @@ public class Principal {
                     FormatUtils.data(f.getDataNascimento()),
                     FormatUtils.valor(f.getSalario()),
                     f.getFuncao());
+
+
         }
     }
 }
