@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.time.Period;
 
 public class Principal {
 
@@ -46,6 +47,11 @@ public class Principal {
         titulo("Aniversariantes dos meses 10 e 12");
         imprimirLista(service.aniversariantesNosMeses(funcionarios, Set.of(10, 12)));
         });
+
+        Funcionario maiorIdade = service.maiorIdade(funcionarios);
+        int idade = Period.between(maiorIdade.getDataNascimento(), LocalDate.now()).getYears();
+        titulo("Funcionário com maior idade");
+        System.out.println("Nome: " + maiorIdade.getNome() + " | Idade: " + idade + " anos");
     }
 
     private static void titulo(String texto) {
@@ -60,7 +66,6 @@ public class Principal {
                     FormatUtils.data(f.getDataNascimento()),
                     FormatUtils.valor(f.getSalario()),
                     f.getFuncao());
-
 
         }
     }

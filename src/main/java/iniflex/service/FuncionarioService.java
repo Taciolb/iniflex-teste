@@ -4,11 +4,9 @@ import iniflex.model.Funcionario;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 public class FuncionarioService {
 
@@ -35,6 +33,13 @@ public class FuncionarioService {
         return funcionarios.stream()
                 .filter(f -> meses.contains(f.getDataNascimento().getMonthValue()))
                 .collect(Collectors.toList());
+    }
+
+    public Funcionario maiorIdade(List<Funcionario> funcionarios) {
+        return funcionarios.stream()
+                .min(Comparator.comparing(Funcionario::getDataNascimento))
+                .orElseThrow();
+
     }
 
 }
