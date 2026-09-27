@@ -46,12 +46,17 @@ public class Principal {
 
         titulo("Aniversariantes dos meses 10 e 12");
         imprimirLista(service.aniversariantesNosMeses(funcionarios, Set.of(10, 12)));
-        });
+
 
         Funcionario maiorIdade = service.maiorIdade(funcionarios);
         int idade = Period.between(maiorIdade.getDataNascimento(), LocalDate.now()).getYears();
         titulo("Funcionário com maior idade");
         System.out.println("Nome: " + maiorIdade.getNome() + " | Idade: " + idade + " anos");
+
+        titulo("Funcionários em ordem alfabética");
+        imprimirLista(service.ordenarPorNome(funcionarios));
+
+        });
     }
 
     private static void titulo(String texto) {

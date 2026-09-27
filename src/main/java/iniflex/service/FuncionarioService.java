@@ -42,4 +42,10 @@ public class FuncionarioService {
 
     }
 
+    public List<Funcionario> ordenarPorNome(List<Funcionario> funcionarios) {
+        return funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getNome))
+                .collect(Collectors.toList());
+    }
+
 }
