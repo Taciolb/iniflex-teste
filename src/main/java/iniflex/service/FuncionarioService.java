@@ -48,4 +48,10 @@ public class FuncionarioService {
                 .collect(Collectors.toList());
     }
 
+    public BigDecimal totalSalarios(List<Funcionario> funcionarios) {
+        return funcionarios.stream()
+                .map(Funcionario::getSalario)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
 }

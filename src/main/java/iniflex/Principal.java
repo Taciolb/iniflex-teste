@@ -5,6 +5,7 @@ import iniflex.service.FuncionarioService;
 import iniflex.util.FormatUtils;
 
 import java.math.BigDecimal;
+import java.text.Format;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,9 @@ public class Principal {
 
         titulo("Funcionários em ordem alfabética");
         imprimirLista(service.ordenarPorNome(funcionarios));
+
+        titulo("Total dos salários");
+        System.out.println("R$ " + FormatUtils.valor(service.totalSalarios(funcionarios)));
 
         });
     }
