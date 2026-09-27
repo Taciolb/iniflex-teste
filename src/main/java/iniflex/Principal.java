@@ -15,6 +15,8 @@ import java.time.Period;
 
 public class Principal {
 
+    private static final BigDecimal SALARIO_MINIMO = new BigDecimal("1212.00");
+
     public static void main(String[] args) {
         FuncionarioService service = new FuncionarioService();
 
@@ -60,6 +62,11 @@ public class Principal {
         titulo("Total dos salários");
         System.out.println("R$ " + FormatUtils.valor(service.totalSalarios(funcionarios)));
 
+        titulo("Salários mínimos por funcionário");
+        for (Funcionario f : service.ordenarPorSalarioDecrescente(funcionarios)) {
+            BigDecimal qtd = service.quantidadeSalariosMinimos(f, SALARIO_MINIMO);
+            System.out.printf("%-10s %s salários mínimos%n", f.getNome(), FormatUtils.valor(qtd));
+        }
         });
     }
 

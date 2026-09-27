@@ -54,4 +54,14 @@ public class FuncionarioService {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+    public List<Funcionario> ordenarPorSalarioDecrescente(List<Funcionario> funcionarios) {
+        return funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getSalario).reversed())
+                .collect(Collectors.toList());
+    }
+
+    public BigDecimal quantidadeSalariosMinimos(Funcionario funcionario, BigDecimal salariominimo) {
+        return funcionario.getSalario().divide(salariominimo, 2, RoundingMode.HALF_UP);
+    }
+
 }
